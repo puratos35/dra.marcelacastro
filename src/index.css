@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  
+  --color-gold: #D4AF37;
+  --color-premium-black: #1A1A1A;
+  --color-nude-soft: #F5F5F0;
+  --color-nude-dark: #E8E3D9;
+}
+
+@layer utilities {
+  .image-frame-premium {
+    @apply relative overflow-hidden rounded-[2rem] shadow-2xl transition-all duration-700;
+  }
+  .image-frame-premium::after {
+    content: '';
+    @apply absolute inset-0 border border-gold/20 rounded-[2rem] pointer-events-none;
+  }
+  .floating-element {
+    animation: floating 6s ease-in-out infinite;
+  }
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans text-premium-black bg-white antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.text-shadow-premium {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
